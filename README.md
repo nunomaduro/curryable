@@ -34,7 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function () {
+Route::get('/posts', function () {
     return Post::all();
 });
 ```
@@ -44,10 +44,10 @@ Same example **now using `curry`**:
 Route::get('/', curry('view', 'welcome'));
 
 // Using the global helper
-Route::get('/users', curry(Post::class)->all());
+Route::get('/posts', curry(Post::class)->all());
 
 // Using the Eloquent macro
-Route::get('/users', Post::curry()->all());
+Route::get('/posts', Post::curry()->all());
 ```
 
 ### On macros:
