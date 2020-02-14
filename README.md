@@ -52,7 +52,7 @@ Route::get('/users', Post::curry()->all());
 
 ### On macros:
 ```php
-Str::macro('relax', curry()->lower()); // or Str::macro('relax', curry('strtolower'));
+Str::macro('toLower', curry()->lower()); // or Str::macro('toLower', curry('strtolower'));
 Str::relax('NUNO'); // nuno
 ```
 
@@ -65,7 +65,7 @@ $collection = collect(['nuno'])->map(function ($name) {
 
 Same example **now using `curry`**:
 ```php
-$collection = collect(['nuno'])->map(curry('strtoupper', $name));
+$collection = collect(['nuno'])->map(curry('strtoupper'));
 ```
 
 ### Dispatching jobs:
