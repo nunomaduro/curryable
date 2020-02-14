@@ -50,6 +50,12 @@ Route::get('/users', curry(Post::class)->all());
 Route::get('/users', Post::curry()->all());
 ```
 
+### On macros:
+```php
+Str::macro('relax', curry()->lower()); // or Str::macro('relax', curry('strtolower'));
+Str::relax('NUNO'); // nuno
+```
+
 ### On collections:
 ```php
 $collection = collect(['nuno'])->map(function ($name) {
