@@ -1,0 +1,10 @@
+parameters:
+    level: max
+    paths:
+        - src
+    checkMissingIterableValueType: false
+    excludes_analyse:
+        - src/Adapters/Laravel/CurryableServiceProvider.php
+    ignoreErrors:
+        - "#function of function call_user_func_array expects callable#"
+        - "#function forward_static_call_array expects callable#"

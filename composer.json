@@ -1,0 +1,59 @@
+{
+    "name": "nunomaduro/curryable",
+    "description": "An elegant and simple curry(f) implementation in PHP.",
+    "keywords": [
+        "php",
+        "curry",
+        "laravel",
+        "package"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "laravel/framework": "^6.15",
+        "nunomaduro/pest": "^0.1",
+        "phpstan/phpstan": "^0.12"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "NunoMaduro\\Curryable\\": "src/"
+        },
+        "files": [
+            "src/globals.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest",
+        "test": [
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NunoMaduro\\Curryable\\Adapters\\Laravel\\CurryableServiceProvider"
+            ]
+        }
+    }
+}
