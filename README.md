@@ -28,50 +28,74 @@ composer require nunomaduro/curryable
 
 This helper usage is best described through example in the [Laravel](https://laravel.com) framework:
 
-### On routing:
+### On routing
 
 ```php
 Route::get('/', curry('view', 'welcome'));
 
-// Calls Post::find($id);
-Route::get('post/{id}', curry(Post::class)->find());
-
-// Using the Eloquent macro
-Route::get('post/{id}', Post::curry()->find());
+// Instead of
+Route::get('/', function () {
+    return view('welcome');
+});
 ```
 
-### On macros:
+```php
+Route::get('user/{id}', curry(User::class)->find());
+// Or with Eloquent macro
+Route::get('user/{id}', User::curry()->find());
+
+// Instead of
+Route::get('user/{id}', function ($id) {
+    return User::find($id);
+});
+```
+
+### On macros
 
 Renaming the `lower` method to `toLower`:
 
 ```php
-Str::macro('toLower', curry()->lower()); // or Str::macro('toLower', curry('strtolower'));
-Str::toLower('NUNO'); // nuno
+Str::macro('toLower', curry()->lower());
+// or with the global `strtolower`
+Str::macro('toLower', curry('strtolower'));
+
+// Instead of
+Str::macro('toLower', function ($value) {
+    return Str::lower($value);
+});
 ```
 
-### On collections:
+### On collections
 
 Using the global `strtoupper`:
 ```php
 $collection = collect(['nuno'])->map(curry('strtoupper')); // ['NUNO']
+
+// Instead of
+$collection = collect(['nuno'])->map(function ($name) {
+    return strtoupper($name);
+});
 ```
 
 Here is another example using the `each`:
 ```php 
 // Calls User::create($user) foreach user
 collect($users)->each(User::curry()->create());
+
+// Instead of
+$collection = collect($users)->map(function ($user) {
+    return User::create($user);
+});
 ```
 
 ### Dispatching jobs:
 ```php
+dispatch(curry(Artisan::class)->call('horizon:terminate'));
+
+// Instead of
 dispatch(function () {
     Artisan::call('horizon:terminate');
 });
-```
-
-Same example **now using `curry`**:
-```php
-dispatch(curry(Artisan::class)->call('horizon:terminate'));
 ```
 
 ### Curry on class instance methods
