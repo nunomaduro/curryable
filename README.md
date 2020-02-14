@@ -14,7 +14,7 @@
 **This package is under development, please don't use it on production and wait for the stable release!**
 
 Curryable was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is an elegant and simple
-**curry(f)** implementation in PHP.
+**curry(f)** implementation in PHP. Currying is an advanced technique of working with functions. It **wraps the given expressions and arguments into a new function** that resolves a value.
 
 ## Installation & Usage
 
