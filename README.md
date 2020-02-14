@@ -44,10 +44,10 @@ Same example **now using `curry`**:
 Route::get('/', curry('view', 'welcome'));
 
 // Using the global helper
-Route::get('/posts', curry(Post::class)->all());
+Route::get('post/{id}', curry(Post::class)->find());
 
 // Using the Eloquent macro
-Route::get('/posts', Post::curry()->all());
+Route::get('post/{id}', Post::curry()->find());
 ```
 
 ### On macros:
