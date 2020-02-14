@@ -53,7 +53,7 @@ Route::get('/users', Post::curry()->all());
 ### On macros:
 ```php
 Str::macro('toLower', curry()->lower()); // or Str::macro('toLower', curry('strtolower'));
-Str::relax('NUNO'); // nuno
+Str::toLower('NUNO'); // nuno
 ```
 
 ### On collections:
