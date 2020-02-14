@@ -14,7 +14,7 @@
 **This package is under development, please don't use it on production and wait for the stable release!**
 
 Curryable was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is an elegant and simple
-**curry(f)** implementation in PHP.
+**curry(f)** implementation in PHP. Currying is an advanced technique of working with functions. It **wraps the given expressions and arguments into a new function** that resolves a value.
 
 ## Installation & Usage
 
@@ -34,7 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function () {
+Route::get('/posts', function () {
     return Post::all();
 });
 ```
@@ -44,16 +44,16 @@ Same example **now using `curry`**:
 Route::get('/', curry('view', 'welcome'));
 
 // Using the global helper
-Route::get('/users', curry(Post::class)->all());
+Route::get('/posts', curry(Post::class)->all());
 
 // Using the Eloquent macro
-Route::get('/users', Post::curry()->all());
+Route::get('/posts', Post::curry()->all());
 ```
 
 ### On macros:
 ```php
-Str::macro('relax', curry()->lower()); // or Str::macro('relax', curry('strtolower'));
-Str::relax('NUNO'); // nuno
+Str::macro('toLower', curry()->lower()); // or Str::macro('toLower', curry('strtolower'));
+Str::toLower('NUNO'); // nuno
 ```
 
 ### On collections:
@@ -65,7 +65,7 @@ $collection = collect(['nuno'])->map(function ($name) {
 
 Same example **now using `curry`**:
 ```php
-$collection = collect(['nuno'])->map(curry('strtoupper', $name));
+$collection = collect(['nuno'])->map(curry('strtoupper'));
 ```
 
 ### Dispatching jobs:
