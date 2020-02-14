@@ -57,15 +57,16 @@ Str::toLower('NUNO'); // nuno
 ```
 
 ### On collections:
+
+Using the global `strtoupper`:
 ```php
-$collection = collect(['nuno'])->map(function ($name) {
-    return strtoupper($name);
-});
+$collection = collect(['nuno'])->map(curry('strtoupper')); // ['NUNO']
 ```
 
-Same example **now using `curry`**:
-```php
-$collection = collect(['nuno'])->map(curry('strtoupper'));
+Here is another example using the `each`:
+```php 
+// Calls User::create($user) foreach user
+collect($users)->each(User::curry()->create());
 ```
 
 ### Dispatching jobs:
