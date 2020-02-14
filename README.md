@@ -29,21 +29,11 @@ composer require nunomaduro/curryable
 This helper usage is best described through example in the [Laravel](https://laravel.com) framework:
 
 ### On routing:
-```php
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/posts', function () {
-    return Post::all();
-});
-```
-
-Same example **now using `curry`**:
 ```php
 Route::get('/', curry('view', 'welcome'));
 
-// Using the global helper
+// Calls Post::find($id);
 Route::get('post/{id}', curry(Post::class)->find());
 
 // Using the Eloquent macro
@@ -51,6 +41,9 @@ Route::get('post/{id}', Post::curry()->find());
 ```
 
 ### On macros:
+
+Renaming the `lower` method to `toLower`:
+
 ```php
 Str::macro('toLower', curry()->lower()); // or Str::macro('toLower', curry('strtolower'));
 Str::toLower('NUNO'); // nuno
