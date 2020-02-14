@@ -11,7 +11,7 @@
 
 ## About Curryable
 
-**This package is under development, please don't use it**
+**This package is under development, please don't use it on production and wait for the stable release!**
 
 Curryable was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is an elegant and simple
 **curry(f)** implementation in PHP.
@@ -26,7 +26,7 @@ Create your package using [Composer](https://getcomposer.org):
 composer require nunomaduro/curryable
 ```
 
-This helper usage is best described through example in the [Laravel)[https://laravel.com] framework:
+This helper usage is best described through example in the [Laravel](https://laravel.com) framework:
 
 ### On routing:
 ```php
