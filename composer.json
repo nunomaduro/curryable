@@ -15,11 +15,10 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.2 || ^8.0"
     },
     "require-dev": {
-        "laravel/framework": "^6.15",
-        "nunomaduro/pest": "^0.1",
+        "pestphp/pest": "^0.3",
         "phpstan/phpstan": "^0.12"
     },
     "autoload-dev": {

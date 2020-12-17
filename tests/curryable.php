@@ -16,11 +16,11 @@ class CurryableClass
 }
 
 it('gets an instance of curry proxy', function (): void {
-    assertInstanceOf(CurryProxy::class, (new CurryableClass)->curry());
+    $this->assertInstanceOf(CurryProxy::class, (new CurryableClass)->curry());
 });
 
 it('proxies arguments as usual', function (): void {
     $instanceMethod =  (new CurryableClass)->curry()->instanceMethod('foo');
 
-    assertEquals('foo', $instanceMethod());
+    $this->assertEquals('foo', $instanceMethod());
 });

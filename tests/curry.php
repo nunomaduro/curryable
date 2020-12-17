@@ -25,44 +25,44 @@ class CurryClass
 
 it('curry the given function', function (): void {
     $closure = curry('strtolower');
-    assertEquals($closure('NUNO'), 'nuno');
+    $this->assertEquals($closure('NUNO'), 'nuno');
 
     $closure = curry('strtolower', 'NUNO');
-    assertEquals($closure(), 'nuno');
+    $this->assertEquals($closure(), 'nuno');
 });
 
 it('curry the given instance', function (): void {
     $closure = curry(new CurryClass())->instanceMethod();
-    assertEquals($closure('first', 'second'), 'first second');
+    $this->assertEquals($closure('first', 'second'), 'first second');
 
     $closure = curry(new CurryClass())->instanceMethod('first');
-    assertEquals($closure('second'), 'first second');
+    $this->assertEquals($closure('second'), 'first second');
 
     $closure = curry(new CurryClass())->instanceMethod('first', 'second');
-    assertEquals($closure(), 'first second');
+    $this->assertEquals($closure(), 'first second');
 });
 
 it('curry given string class', function (): void {
     $closure = curry(CurryClass::class)->staticMethod();
-    assertEquals($closure('first', 'second'), 'first second');
+    $this->assertEquals($closure('first', 'second'), 'first second');
 
     $closure = curry(CurryClass::class)->staticMethod('first');
-    assertEquals($closure('second'), 'first second');
+    $this->assertEquals($closure('second'), 'first second');
 
     $closure = curry(CurryClass::class)->staticMethod('first', 'second');
-    assertEquals($closure(), 'first second');
+    $this->assertEquals($closure(), 'first second');
 });
 
 it('curry to properties', function (): void {
     $closure = curry(new CurryClass())->publicInstanceProperty;
-    assertEquals($closure(), 'publicInstanceProperty');
+    $this->assertEquals($closure(), 'publicInstanceProperty');
 
     $closure = curry(CurryClass::class)->publicStaticProperty;
-    assertEquals($closure(), 'publicStaticProperty');
+    $this->assertEquals($closure(), 'publicStaticProperty');
 
     $closure = curry()->privateInstanceProperty;
     $closure = $closure->bindTo(new CurryClass(), CurryClass::class);
-    assertEquals($closure(), 'privateInstanceProperty');
+    $this->assertEquals($closure(), 'privateInstanceProperty');
 });
 
 it('allows pending binds', function (): void {
@@ -70,5 +70,5 @@ it('allows pending binds', function (): void {
 
     $closure = $closure->bindTo(new CurryClass(), CurryClass::class);
 
-    assertEquals($closure('first', 'second'), 'first second');
+    $this->assertEquals($closure('first', 'second'), 'first second');
 });
